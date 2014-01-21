@@ -14,15 +14,7 @@ Make working with HTML forms more tolerable.
 Build Status
 ------------
 
-+-----------+------------------+---------------------+
-| Branch    | Status           | Coverage            |
-+===========+==================+=====================+
-| Master    | |Build StatusM|  | |Coverage Status|   |
-+-----------+------------------+---------------------+
-| Develop   | |Build StatusD|  |                     |
-+-----------+------------------+---------------------+
-
-|Pypi|
+|Build Status| |Coverage Status| |Version| |Downloads| |Licence|
 
 Installation
 ------------
@@ -46,11 +38,13 @@ Table of Contents
 
 .. include:: toc.rst.inc
 
-.. |Coverage Status| image:: https://coveralls.io/repos/bespohk/watson-auth/badge.png
-   :target: https://coveralls.io/r/bespohk/watson-auth
-.. |Build StatusD| image:: https://api.travis-ci.org/bespohk/watson-auth.png?branch=develop
-   :target: https://travis-ci.org/bespohk/watson-auth
-.. |Build StatusM| image:: https://api.travis-ci.org/bespohk/watson-auth.png?branch=master
-   :target: https://travis-ci.org/bespohk/watson-auth
-.. |Pypi| image:: https://pypip.in/v/watson-auth/badge.png
-   :target: https://crate.io/packages/watson-auth/
+.. |Build Status| image:: https://api.travis-ci.org/Bespohk/watson-form.png?branch=master
+   :target: https://travis-ci.org/Bespohk/watson-form
+.. |Coverage Status| image:: https://coveralls.io/repos/bespohk/watson-form/badge.png
+   :target: https://coveralls.io/r/bespohk/watson-form
+.. |Version| image:: https://pypip.in/v/watson-form/badge.png
+   :target: https://pypi.python.org/pypi/watson-form/
+.. |Downloads| image:: https://pypip.in/d/watson-form/badge.png
+   :target: https://pypi.python.org/pypi/watson-form/
+.. |Licence| image:: https://pypip.in/license/watson-form/badge.png
+   :target: https://pypi.python.org/pypi/watson-form/
