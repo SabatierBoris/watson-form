@@ -1,1 +1,6 @@
 sphinxcontrib-napoleon
+watson-common >= 1.0.0
+watson-html >= 1.0.0
+watson-validators >= 1.0.0
+watson-filters >= 1.0.0
+watson-http >= 1.0.0  # required for tests only
