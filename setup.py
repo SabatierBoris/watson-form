@@ -64,7 +64,7 @@ with open(os.path.join(path, 'requirements.txt')) as f:
 setup(
     name='watson-form',
     version=watson.form.__version__,
-    url='http://github.com/bespohk/watson-form',
+    url='http://github.com/watsonpy/watson-form',
     description='Make working with HTML forms more tolerable.',
     long_description=readme,
 

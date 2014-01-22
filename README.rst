@@ -29,10 +29,10 @@ Optional
 
 -  watson-http
 
-.. |Build Status| image:: https://api.travis-ci.org/Bespohk/watson-form.png?branch=master
-   :target: https://travis-ci.org/Bespohk/watson-form
-.. |Coverage Status| image:: https://coveralls.io/repos/bespohk/watson-form/badge.png
-   :target: https://coveralls.io/r/bespohk/watson-form
+.. |Build Status| image:: https://api.travis-ci.org/watsonpy/watson-form.png?branch=master
+   :target: https://travis-ci.org/watsonpy/watson-form
+.. |Coverage Status| image:: https://coveralls.io/repos/watsonpy/watson-form/badge.png
+   :target: https://coveralls.io/r/watsonpy/watson-form
 .. |Version| image:: https://pypip.in/v/watson-form/badge.png
    :target: https://pypi.python.org/pypi/watson-form/
 .. |Downloads| image:: https://pypip.in/d/watson-form/badge.png
