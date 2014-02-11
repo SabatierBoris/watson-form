@@ -2,7 +2,7 @@
 from io import BytesIO, BufferedReader
 from pytest import raises
 from watson.form.decorators import has_csrf
-from watson.http.messages import create_request_from_environ
+from watson.http.messages import Request
 from tests.watson.form.support import UnprotectedForm, sample_environ
 
 
@@ -14,7 +14,7 @@ class TestHasCsrf(object):
         environ = sample_environ(REQUEST_METHOD='POST')
         environ['wsgi.input'] = BufferedReader(BytesIO(data.encode('utf-8')))
         environ['CONTENT_LENGTH'] = len(data)
-        self.request = create_request_from_environ(
+        self.request = Request.from_environ(
             environ, 'watson.http.sessions.Memory')
 
     def test_add_csrf_field_to_form(self):

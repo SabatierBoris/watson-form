@@ -2,7 +2,7 @@
 from io import BytesIO, BufferedReader
 from pytest import raises
 from watson.form import Form, Multipart
-from watson.http.messages import create_request_from_environ, Request
+from watson.http.messages import Request
 from tests.watson.form.support import (LoginForm, UploadForm, User,
                                        form_user_mapping, Contact, Other,
                                        sample_environ, ProtectedForm,
@@ -49,10 +49,11 @@ class TestForm(object):
             'email': None}
         form.data = post_data
         assert form.data == post_data
-        request = Request(
-            'GET',
-            post={'first_name': 'data'},
-            files={'file': 'something'})
+        data = 'first_name=data'
+        environ = sample_environ(REQUEST_METHOD='POST', CONTENT_LENGTH=len(data))
+        environ['wsgi.input'] = BufferedReader(
+            BytesIO(data.encode('utf-8')))
+        request = Request.from_environ(environ)
         form.data = request
         assert form.data['first_name'] == 'data'
 
@@ -203,7 +204,7 @@ class TestFormProcessingCsrfRequest(object):
             CONTENT_LENGTH=len(data))
         environ['wsgi.input'] = BufferedReader(
             BytesIO(data.encode('utf-8')))
-        self.request = create_request_from_environ(
+        self.request = Request.from_environ(
             environ, 'watson.http.sessions.Memory')
 
     def teardown(self):

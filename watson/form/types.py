@@ -136,7 +136,7 @@ class Form(TagMixin):
             errors['form'] = {'messages': self._form_errors, 'label': 'Form'}
         return errors
 
-    @cached_property
+    @property
     def data(self):
         """Returns a dict containing all the field values.
 
