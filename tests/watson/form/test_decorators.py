@@ -3,7 +3,8 @@ from io import BytesIO, BufferedReader
 from pytest import raises
 from watson.form.decorators import has_csrf
 from watson.http.messages import Request
-from tests.watson.form.support import UnprotectedForm, sample_environ
+from tests.watson.form.support import (UnprotectedForm, sample_environ,
+                                       environ_with_file)
 
 
 class TestHasCsrf(object):
@@ -40,6 +41,13 @@ class TestHasCsrf(object):
     def test_set_data_from_request(self):
         form = self.protected_form('test', session=self.request.session)
         form.data = self.request
+        assert form.data['test'] == 'blah'
+
+    def test_set_data_from_request_with_file(self):
+        request = Request.from_environ(
+            environ_with_file(), 'watson.http.sessions.Memory')
+        form = self.protected_form('test', session=request.session)
+        form.data = request
         assert form.data['test'] == 'blah'
 
     def test_set_data_from_dict(self):

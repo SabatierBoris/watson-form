@@ -6,7 +6,7 @@ from watson.http.messages import Request
 from tests.watson.form.support import (LoginForm, UploadForm, User,
                                        form_user_mapping, Contact, Other,
                                        sample_environ, ProtectedForm,
-                                       SampleFormValidator)
+                                       SampleFormValidator, environ_with_file)
 
 
 class TestForm(object):
@@ -49,13 +49,10 @@ class TestForm(object):
             'email': None}
         form.data = post_data
         assert form.data == post_data
-        data = 'first_name=data'
-        environ = sample_environ(REQUEST_METHOD='POST', CONTENT_LENGTH=len(data))
-        environ['wsgi.input'] = BufferedReader(
-            BytesIO(data.encode('utf-8')))
+        environ = environ_with_file()
         request = Request.from_environ(environ)
         form.data = request
-        assert form.data['first_name'] == 'data'
+        assert form.data['first_name'] == '1234'
 
     def test_bind_object_to_form_with_mapping(self):
         form = LoginForm('test')

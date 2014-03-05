@@ -6,5 +6,5 @@ try:
     from watson.form.types import Form, Multipart
 
     __all__ = ['Form', 'Multipart']
-except:
-    pass
+except:  # pragma: no cover
+    pass  # pragma: no cover

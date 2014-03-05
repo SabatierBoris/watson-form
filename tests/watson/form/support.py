@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Support functions, classes
+from io import BufferedReader, BytesIO
 from watson.form import Form, fields
 from watson.form.decorators import has_csrf
 from wsgiref import util
@@ -9,6 +10,37 @@ def sample_environ(**kwargs):
     environ = {}
     util.setup_testing_defaults(environ)
     environ.update(kwargs)
+    return environ
+
+
+def environ_with_file(**kwargs):
+    kwargs['REQUEST_METHOD'] = 'POST'
+    kwargs['CONTENT_TYPE'] = 'multipart/form-data; boundary=---------------------------721837373350705526688164684'
+    environ = sample_environ(**kwargs)
+    postdata = """-----------------------------721837373350705526688164684
+Content-Disposition: form-data; name="first_name"
+
+1234
+-----------------------------721837373350705526688164684
+Content-Disposition: form-data; name="test"
+
+blah
+-----------------------------721837373350705526688164684
+Content-Disposition: form-data; name="file"; filename="test.txt"
+Content-Type: text/plain
+
+Testing 123.
+
+-----------------------------721837373350705526688164684
+Content-Disposition: form-data; name="submit"
+
+Add\x20
+-----------------------------721837373350705526688164684--
+"""
+    environ['CONTENT_LENGTH'] = len(postdata)
+    encoding = 'utf-8'
+    fp = BufferedReader(BytesIO(postdata.encode(encoding)))
+    environ['wsgi.input'] = fp
     return environ
 
 form_user_mapping = {
