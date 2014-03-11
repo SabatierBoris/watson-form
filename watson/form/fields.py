@@ -175,6 +175,9 @@ class Input(FieldMixin):
         natively.
         """
         attributes = self.attributes.copy()
+        if '_class' in kwargs:
+            kwargs['class'] = kwargs.get('_class')
+            del kwargs['_class']
         attributes.update(kwargs)
         if self.value:
             attributes['value'] = str(self.value)
